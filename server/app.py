@@ -1,0 +1,62 @@
+"""
+FastAPI application for the Tour Planner Environment.
+
+Usage:
+    # Development (with auto-reload):
+    uvicorn server.app:app --reload --host 0.0.0.0 --port 8000
+
+    # Or run directly:
+    uv run --project . server
+"""
+
+import os
+
+# Support both in-repo and standalone imports
+try:
+    # In-repo imports (when running from OpenEnv repository)
+    from openenv.core.env_server.http_server import create_app
+
+    from ..models import TourAction, TourObservation
+    from .tour_environment import TourPlannerEnvironment
+except ImportError:
+    # Standalone imports (when environment is standalone with openenv from pip)
+    from envs.tour_planner_env.models import TourAction, TourObservation
+    from openenv.core.env_server.http_server import create_app
+    from envs.tour_planner_env.server.tour_environment import TourPlannerEnvironment
+
+
+# Get configuration from environment variables
+default_task = os.getenv("TOUR_PLANNER_TASK", "task_2_medium")
+default_city = os.getenv("TOUR_PLANNER_CITY", "default")
+
+
+def create_tour_planner_environment():
+    """Factory function that creates TourPlannerEnvironment instances."""
+    return TourPlannerEnvironment()
+
+
+# Create the FastAPI app
+app = create_app(
+    create_tour_planner_environment,
+    TourAction,
+    TourObservation,
+    env_name="tour_planner_env",
+)
+
+
+def main(host: str = "0.0.0.0", port: int = 8000):
+    """
+    Entry point for direct execution via uv run or python -m.
+
+    This function enables running the server without Docker:
+        uv run --project . server
+        uv run --project . server --port 8001
+        python -m tour_planner_env.server.app
+    """
+    import uvicorn
+
+    uvicorn.run(app, host=host, port=port)
+
+
+if __name__ == "__main__":
+    main()

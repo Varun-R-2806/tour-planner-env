@@ -1,0 +1,7 @@
+[
+    {"place_id": "shibuya_crossing", "name": "Shibuya Crossing", "category": "attraction", "cost": 0.0, "duration_hours": 1.0, "fatigue_points": 2.0, "safety_score": 1.0, "location_tag": "Shibuya", "travel_cost_from_airport": 35.0},
+    {"place_id": "sensoji_temple", "name": "Senso-ji Temple", "category": "attraction", "cost": 0.0, "duration_hours": 2.5, "fatigue_points": 2.5, "safety_score": 0.99, "location_tag": "Asakusa", "travel_cost_from_airport": 40.0},
+    {"place_id": "park_hyatt", "name": "Park Hyatt Tokyo", "category": "hotel", "cost": 800.0, "duration_hours": 8.0, "fatigue_points": -6.0, "safety_score": 1.0, "location_tag": "Shinjuku", "travel_cost_from_airport": 30.0},
+    {"place_id": "tsukiji_outer_market", "name": "Tsukiji Outer Market", "category": "shopping", "cost": 50.0, "duration_hours": 2.0, "fatigue_points": 1.5, "safety_score": 0.98, "location_tag": "Chuo", "travel_cost_from_airport": 25.0},
+    {"place_id": "ueno_park", "name": "Ueno Park", "category": "nature", "cost": 0.0, "duration_hours": 3.0, "fatigue_points": 1.5, "safety_score": 0.97, "location_tag": "Taito", "travel_cost_from_airport": 38.0}
+]

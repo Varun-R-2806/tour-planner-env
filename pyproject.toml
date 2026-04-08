@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openenv-tour-planner-env"
+version = "0.1.0"
+description = "Tour Planner Environment for OpenEnv - multi-day itinerary planning with budget, fatigue, and safety constraints"
+requires-python = ">=3.10"
+dependencies = [
+    "openenv-core[core]>=0.2.2",
+    "fastapi>=0.115.0",
+    "pydantic>=2.0.0",
+    "uvicorn[standard]>=0.24.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+server = "tour_planner_env.server.app:main"
+
+[tool.setuptools]
+include-package-data = true
+packages = ["tour_planner_env", "tour_planner_env.server"]
+package-dir = { "tour_planner_env" = ".", "tour_planner_env.server" = "server" }
+
+[tool.setuptools.package-data]
+tour_planner_env = ["**/*.yaml", "**/*.yml", "catalogues/*.json"]

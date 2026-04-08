@@ -1,0 +1,8 @@
+[
+    {"place_id": "eiffel_tower", "name": "Eiffel Tower", "category": "attraction", "cost": 30.0, "duration_hours": 3.0, "fatigue_points": 2.0, "safety_score": 0.99, "location_tag": "7th Arr.", "travel_cost_from_airport": 50.0},
+    {"place_id": "louvre", "name": "Louvre Museum", "category": "attraction", "cost": 20.0, "duration_hours": 4.0, "fatigue_points": 3.0, "safety_score": 0.98, "location_tag": "1st Arr.", "travel_cost_from_airport": 45.0},
+    {"place_id": "notre_dame", "name": "Notre Dame Cathedral", "category": "attraction", "cost": 0.0, "duration_hours": 1.5, "fatigue_points": 1.0, "safety_score": 0.95, "location_tag": "4th Arr.", "travel_cost_from_airport": 48.0},
+    {"place_id": "le_relais", "name": "Le Relais de l'Entrecôte", "category": "restaurant", "cost": 40.0, "duration_hours": 2.0, "fatigue_points": 0.5, "safety_score": 0.99, "location_tag": "6th Arr.", "travel_cost_from_airport": 52.0},
+    {"place_id": "luxembourg_gardens", "name": "Luxembourg Gardens", "category": "nature", "cost": 0.0, "duration_hours": 2.0, "fatigue_points": 1.0, "safety_score": 0.97, "location_tag": "6th Arr.", "travel_cost_from_airport": 52.0},
+    {"place_id": "hotel_ritz", "name": "Hôtel Ritz Paris", "category": "hotel", "cost": 1000.0, "duration_hours": 8.0, "fatigue_points": -5.0, "safety_score": 1.0, "location_tag": "1st Arr.", "travel_cost_from_airport": 45.0}
+]

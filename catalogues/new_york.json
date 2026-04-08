@@ -1,0 +1,7 @@
+[
+    {"place_id": "times_square", "name": "Times Square", "category": "attraction", "cost": 0.0, "duration_hours": 1.0, "fatigue_points": 2.5, "safety_score": 0.95, "location_tag": "Midtown", "travel_cost_from_airport": 70.0},
+    {"place_id": "central_park", "name": "Central Park", "category": "nature", "cost": 0.0, "duration_hours": 3.0, "fatigue_points": 2.0, "safety_score": 0.98, "location_tag": "Uptown", "travel_cost_from_airport": 75.0},
+    {"place_id": "the_plaza", "name": "The Plaza", "category": "hotel", "cost": 1200.0, "duration_hours": 8.0, "fatigue_points": -6.0, "safety_score": 1.0, "location_tag": "Midtown", "travel_cost_from_airport": 68.0},
+    {"place_id": "met_museum", "name": "The Metropolitan Museum of Art", "category": "attraction", "cost": 30.0, "duration_hours": 4.0, "fatigue_points": 3.0, "safety_score": 0.99, "location_tag": "Uptown", "travel_cost_from_airport": 75.0},
+    {"place_id": "pizza_joe", "name": "Joe's Pizza", "category": "restaurant", "cost": 15.0, "duration_hours": 1.0, "fatigue_points": 0.5, "safety_score": 0.90, "location_tag": "Greenwich Village", "travel_cost_from_airport": 65.0}
+]

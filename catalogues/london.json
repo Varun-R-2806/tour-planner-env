@@ -1,0 +1,7 @@
+[
+    {"place_id": "british_museum", "name": "British Museum", "category": "attraction", "cost": 0.0, "duration_hours": 3.0, "fatigue_points": 2.0, "safety_score": 0.99, "location_tag": "Bloomsbury", "travel_cost_from_airport": 60.0},
+    {"place_id": "london_eye", "name": "London Eye", "category": "attraction", "cost": 45.0, "duration_hours": 1.0, "fatigue_points": 1.0, "safety_score": 0.98, "location_tag": "South Bank", "travel_cost_from_airport": 65.0},
+    {"place_id": "the_savoy", "name": "The Savoy", "category": "hotel", "cost": 900.0, "duration_hours": 8.0, "fatigue_points": -5.0, "safety_score": 1.0, "location_tag": "Strand", "travel_cost_from_airport": 55.0},
+    {"place_id": "dishoom", "name": "Dishoom Covent Garden", "category": "restaurant", "cost": 35.0, "duration_hours": 1.5, "fatigue_points": 0.5, "safety_score": 0.99, "location_tag": "Covent Garden", "travel_cost_from_airport": 58.0},
+    {"place_id": "hyde_park", "name": "Hyde Park", "category": "nature", "cost": 0.0, "duration_hours": 2.0, "fatigue_points": 1.0, "safety_score": 0.97, "location_tag": "Westminster", "travel_cost_from_airport": 45.0}
+]

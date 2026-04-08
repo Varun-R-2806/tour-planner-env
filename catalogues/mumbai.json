@@ -1,0 +1,7 @@
+[
+    {"place_id": "gate_of_india", "name": "Gateway of India", "category": "attraction", "cost": 0.0, "duration_hours": 2.0, "fatigue_points": 2.5, "safety_score": 0.95, "location_tag": "Colaba", "travel_cost_from_airport": 400.0},
+    {"place_id": "taj_mahal_hotel", "name": "The Taj Mahal Palace", "category": "hotel", "cost": 35000.0, "duration_hours": 8.0, "fatigue_points": -6.0, "safety_score": 1.0, "location_tag": "Colaba", "travel_cost_from_airport": 420.0},
+    {"place_id": "marina_drive", "name": "Marine Drive", "category": "nature", "cost": 0.0, "duration_hours": 1.5, "fatigue_points": 1.0, "safety_score": 0.98, "location_tag": "Marine Lines", "travel_cost_from_airport": 380.0},
+    {"place_id": "chhatrapati_shivaji", "name": "Chhatrapati Shivaji Maharaj Terminus", "category": "attraction", "cost": 0.0, "duration_hours": 2.5, "fatigue_points": 3.0, "safety_score": 0.95, "location_tag": "CST", "travel_cost_from_airport": 450.0},
+    {"place_id": "bademiya", "name": "Bademiya", "category": "restaurant", "cost": 800.0, "duration_hours": 1.0, "fatigue_points": 1.0, "safety_score": 0.90, "location_tag": "Colaba", "travel_cost_from_airport": 410.0}
+]
