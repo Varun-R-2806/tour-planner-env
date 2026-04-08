@@ -58,8 +58,8 @@ def run_episode(task_id: str, city_name: str):
         print(f"Error connecting to environment: {e}", file=sys.stderr)
         return
 
-    # [START] <task_id> <city_name>
-    print(f"[START] {task_id} {city_name}")
+    # [START] task=<task_name> env=<benchmark> model=<model_name>
+    print(f"[START] task={task_id} env=tour_planner_benchmark model={MODEL_NAME}", flush=True)
 
     # Reset
     obs_result = env.reset(task_id=task_id, city_name=city_name)
@@ -68,6 +68,7 @@ def run_episode(task_id: str, city_name: str):
     done = False
     step_count = 0
     max_steps = 20
+    rewards: List[float] = []
 
     while not done and step_count < max_steps:
         # Construct prompt
@@ -105,8 +106,10 @@ def run_episode(task_id: str, city_name: str):
             done = step_result.done
             reward = step_result.reward
             
-            # [STEP] <step_num> <reward> <done> <action_json>
-            print(f"[STEP] {step_count} {reward} {done} {action.model_dump_json()}")
+            # [STEP] step=<n> action=<action_str> reward=<0.00> done=<true|false> error=<msg|null>
+            action_str = action.model_dump_json().replace('\n', '')
+            rewards.append(reward)
+            print(f"[STEP] step={step_count + 1} action={action_str} reward={reward:.2f} done={str(done).lower()} error=null", flush=True)
             
         except Exception as e:
             print(f"Error during step {step_count}: {e}", file=sys.stderr)
@@ -126,8 +129,11 @@ def run_episode(task_id: str, city_name: str):
         state_dict = final_state.model_dump() if hasattr(final_state, "model_dump") else final_state.dict()
         report = grader.grade(state_dict)
         
-        # [END] <final_score>
-        print(f"[END] {report.final_score}")
+        # [END] success=<true|false> steps=<n> score=<score> rewards=<r1,r2,...,rn>
+        success_threshold = 0.70  # General threshold, actual depends on task
+        success = report.final_score >= success_threshold
+        rewards_str = ",".join(f"{r:.2f}" for r in rewards)
+        print(f"[END] success={str(success).lower()} steps={step_count} score={report.final_score:.3f} rewards={rewards_str}", flush=True)
         
         # Human-readable summary to stderr (doesn't interfere with scoring)
         print(report, file=sys.stderr)
