@@ -9,16 +9,27 @@ import argparse
 from typing import List, Dict, Any
 from openai import OpenAI
 
-# Standard import (grader will pip install your package first)
+# Robust imports for both Local testing and Grading server
 try:
+    # 1. Grader: Will work if they `pip install -e .` on your repo
     from tour_planner_env import TourPlannerEnv, TourAction
 except ImportError:
-    # Fallback if grading script runs it differently
     import sys
     import os
-    sys.path.append(os.path.join(os.getcwd(), ".."))
-    from tour_planner_env.client import TourPlannerEnv
-    from tour_planner_env.models import TourAction
+    
+    # 2. Local fallback: If you run it from C:\Scaler on your laptop
+    envs_path = os.path.join(os.getcwd(), "OpenEnv", "envs")
+    openenv_src = os.path.join(os.getcwd(), "OpenEnv", "src")
+    if os.path.exists(envs_path):
+        sys.path.append(envs_path)
+        sys.path.append(openenv_src)
+        from tour_planner_env import TourPlannerEnv, TourAction
+        
+    # 3. Direct execution fallback: If inference.py is run inside the repo itself
+    else:
+        sys.path.append(os.path.join(os.getcwd(), "..", "..", "src"))
+        from client import TourPlannerEnv
+        from models import TourAction
 
 def run_episode(task_id: str, city_name: str):
     # Environment Variables for LLM
@@ -33,8 +44,8 @@ def run_episode(task_id: str, city_name: str):
     # Optional - if you use from_docker_image():
     LOCAL_IMAGE_NAME = os.getenv("LOCAL_IMAGE_NAME")
 
-    # Use HF_TOKEN as fallback for API_KEY if grading platform doesn't use standard OPENAI_API_KEY
-    api_key = os.getenv("OPENAI_API_KEY") or HF_TOKEN
+    # Use API_KEY (injected by hackathon grader), or fallback to HF_TOKEN / OPENAI_API_KEY
+    api_key = os.getenv("API_KEY") or HF_TOKEN or os.getenv("OPENAI_API_KEY")
 
     if not api_key:
         print("Error: OPENAI_API_KEY or HF_TOKEN must be set.", file=sys.stderr)
@@ -49,7 +60,7 @@ def run_episode(task_id: str, city_name: str):
             _client = TourPlannerEnv.from_docker_image(LOCAL_IMAGE_NAME)
         else:
             # Fallback to remote or local server
-            ENV_BASE_URL = os.getenv("SPACE_URL", "http://localhost:8000")
+            ENV_BASE_URL = os.getenv("SPACE_URL", "https://thefated-tour-planner-env.hf.space")
             _client = TourPlannerEnv(base_url=ENV_BASE_URL)
             
         # Use sync wrapper for easier scripting
