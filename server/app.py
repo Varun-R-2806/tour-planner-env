@@ -43,6 +43,42 @@ app = create_app(
     env_name="tour_planner_env",
 )
 
+# ---------------------------------------------------------------------------
+# /tasks endpoint — required by the hackathon validator to enumerate tasks
+# ---------------------------------------------------------------------------
+
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+
+TASKS = [
+    {
+        "task_id": "task_1_easy",
+        "difficulty": "easy",
+        "description": "Plan a 2-day tour within a $500 budget covering attractions and restaurants.",
+        "has_grader": True,
+        "score_range": [0.0, 1.0],
+    },
+    {
+        "task_id": "task_2_medium",
+        "difficulty": "medium",
+        "description": "Plan a 3-day tour within a $1000 budget covering attractions, restaurants, and nature.",
+        "has_grader": True,
+        "score_range": [0.0, 1.0],
+    },
+    {
+        "task_id": "task_3_hard",
+        "difficulty": "hard",
+        "description": "Plan a 5-day tour within a $1500 budget covering 4 categories with fatigue and safety constraints.",
+        "has_grader": True,
+        "score_range": [0.0, 1.0],
+    },
+]
+
+@app.get("/tasks")
+def list_tasks():
+    """Return all available tasks with grader metadata."""
+    return JSONResponse(content={"tasks": TASKS})
+
 
 def main(host: str = "0.0.0.0", port: int = 8000):
     """
