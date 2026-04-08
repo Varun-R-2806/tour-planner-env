@@ -1,3 +1,12 @@
+---
+title: Tour Planner Env
+emoji: 🏃
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # Tour Planner RL Environment
 
 The Tour Planner environment is a multi-step, multi-day simulation designed to test agents' ability to plan itineraries given real-world constraints:
