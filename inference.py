@@ -156,8 +156,24 @@ def run_episode(task_id: str, city_name: str):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--task", default="task_2_medium")
+    parser.add_argument("--task", default="all")
     parser.add_argument("--city", default="paris")
     args = parser.parse_args()
-    
-    run_episode(args.task, args.city)
+
+    # Support TASK_NAME env var injected by hackathon grader
+    task_override = os.getenv("TASK_NAME")
+    if task_override:
+        args.task = task_override
+
+    # Run all 3 tasks in sequence — required for "3 tasks with graders" check
+    ALL_TASKS = [
+        ("task_1_easy",   "paris"),
+        ("task_2_medium", "tokyo"),
+        ("task_3_hard",   "mumbai"),
+    ]
+
+    if args.task == "all":
+        for task_id, city in ALL_TASKS:
+            run_episode(task_id, city)
+    else:
+        run_episode(args.task, args.city)
