@@ -19,8 +19,8 @@ COPY . .
 # Install the environment as a package (handles all dependencies from pyproject.toml)
 RUN pip install --no-cache-dir -e .
 
-# Expose port (default 8000)
-EXPOSE 8000
+# Expose default Hugging Face Spaces port
+EXPOSE 7860
 
 # Server execution entry point
-CMD ["python", "-m", "tour_planner_env.server.app"]
+CMD ["uvicorn", "tour_planner_env.server.app:app", "--host", "0.0.0.0", "--port", "7860"]
